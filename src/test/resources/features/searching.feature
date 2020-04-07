@@ -9,6 +9,6 @@ Feature: searching
     Then Results should contains searched word
     Examples:
       | wanted item name |
-      | telefon          |
-  git agi    | czapka           |
-
+      | nóż              |
+      | czapka           |
+      | rower            |
