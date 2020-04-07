@@ -9,6 +9,6 @@ Feature: searching
     Then Results should contains searched word
     Examples:
       | wanted item name |
-      | telefon|
-  #    | czapka           |
-#    Then Ads should contains searched word
+      | telefon          |
+  git agi    | czapka           |
+
