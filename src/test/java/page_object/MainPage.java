@@ -2,16 +2,13 @@ package page_object;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.List;
-
 public class MainPage {
-    private WebDriver driver;
+    private  WebDriver driver;
 
 
     public MainPage(WebDriver driver) {
@@ -25,15 +22,26 @@ public class MainPage {
     private WebElement clickSearchBar;
     @FindBy(css = "._d25db_1t06j._13q9y._8tsq7._1q2ua")
     private WebElement searchButton;
-    @FindAll({
-            @FindBy(css = "._9c44d_1LBF0")
-    })
-    private List<WebElement> searchResultList;
+    @FindBy(xpath = "//a[@href='/dzial/moda']")
+    private WebElement fashionCategoryButton;
+    @FindBy(xpath = "//div[@data-dropdown-id='user_dropdown']")
+    private WebElement userDropdown;
+    @FindBy(xpath = "//a[@data-role='register-button']")
+    private WebElement registerButton;
 
-    public List<WebElement> getSearchResultList() {
-        return searchResultList;
+    public void ClickRegisterButton(){
+        registerButton.click();
     }
 
+    public void UserDropdownClick(){
+        userDropdown.click();
+    }
+
+
+    public void ClickFashionCategoryButton() {
+
+        fashionCategoryButton.click();
+    }
 
     public void ClickSearchButton() {
         searchButton.click();

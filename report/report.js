@@ -1,119 +1,112 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("src/test/resources/features/searching.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("src/test/resources/features/filtering.feature");
 formatter.feature({
-  "name": "searching",
+  "name": "Adding to cart",
   "description": "",
   "keyword": "Feature"
 });
-formatter.scenarioOutline({
-  "name": "Searching for ads as a non-logged user",
-  "description": "",
-  "keyword": "Scenario Outline"
-});
-formatter.step({
-  "name": "User is on main page",
-  "keyword": "Given "
-});
-formatter.step({
-  "name": "User accept privacy policy",
-  "keyword": "When "
-});
-formatter.step({
-  "name": "User click on searching bar",
-  "keyword": "And "
-});
-formatter.step({
-  "name": "User fill the searching field with \u003cwanted item name\u003e",
-  "keyword": "And "
-});
-formatter.step({
-  "name": "User click search button",
-  "keyword": "And "
-});
-formatter.step({
-  "name": "Results should contains searched word",
-  "keyword": "Then "
-});
-formatter.examples({
-  "name": "",
-  "description": "",
-  "keyword": "Examples",
-  "rows": [
-    {
-      "cells": [
-        "wanted item name"
-      ]
-    },
-    {
-      "cells": [
-        "telefon"
-      ]
-    }
-  ]
-});
 formatter.scenario({
-  "name": "Searching for ads as a non-logged user",
+  "name": "Adding items to cart as non-logged user",
   "description": "",
-  "keyword": "Scenario Outline"
+  "keyword": "Scenario"
 });
 formatter.step({
-  "name": "User is on main page",
+  "name": "User is on main page and privacy policy is accepted",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "Searching_Steps.userIsOnMainPage()"
+  "location": "FilteringSteps.userIsOnMainPageAndPrivacyPolicyIsAccepted()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "User accept privacy policy",
+  "name": "User click fashion category",
   "keyword": "When "
 });
 formatter.match({
-  "location": "Searching_Steps.userAcceptPrivacyPolicy()"
+  "location": "FilteringSteps.userClickFashionCategory()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "User click on searching bar",
+  "name": "User click on subcategory",
   "keyword": "And "
 });
 formatter.match({
-  "location": "Searching_Steps.userClickOnSearchingBar()"
+  "location": "FilteringSteps.userClickOnSubcategory()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "User fill the searching field with telefon",
+  "name": "User click watches subcategory",
   "keyword": "And "
 });
 formatter.match({
-  "location": "Searching_Steps.userFillTheSearchingFieldWithWantedItemName(String)"
+  "location": "FilteringSteps.userClickWatchesSubcategory()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "User click search button",
+  "name": "User click powystawowe filter",
   "keyword": "And "
 });
 formatter.match({
-  "location": "Searching_Steps.userClickSearchButton()"
+  "location": "FilteringSteps.userClickPowystawoweFilter()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "Results should contains searched word",
+  "name": "User click kup teraz filter",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "FilteringSteps.userClickKupTerazFilter()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "User change view",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "FilteringSteps.userChangeView()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "User click below 25zł filter",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "FilteringSteps.userClickBelowZłFilter()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "Chosen filter should be visible on page under the category section",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "Searching_Steps.resultsShouldContainsSearchedWord()"
+  "location": "FilteringSteps.chosenFilterShouldBeVisibleOnPageUnderTheCategorySection()"
 });
 formatter.result({
-  "error_message": "java.lang.AssertionError: \nExpected: a string containing \"telefon\"\n     but: was \"oferta sponsorowana\nxiaomi mi 9t 6 + 64 gb nfc 48mp flame red +airdots\nod\nsuper sprzedawcy\nkolorczerwonyprzekątna ekranu6.39\"wbudowana pamięć64 gbpamięć ram6 gb\n1 512,00 zł\nkup teraz\n1 520,00 zł z dostawą\"\n\tat org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:20)\n\tat org.junit.Assert.assertThat(Assert.java:956)\n\tat org.junit.Assert.assertThat(Assert.java:923)\n\tat step_definitions.Searching_Steps.resultsShouldContainsSearchedWord(Searching_Steps.java:61)\n\tat ✽.Results should contains searched word(src/test/resources/features/searching.feature:9)\n",
-  "status": "failed"
+  "status": "passed"
+});
+formatter.step({
+  "name": "Ads should match the filters",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "FilteringSteps.adsShouldMatchTheFilters()"
+});
+formatter.result({
+  "status": "passed"
 });
 });

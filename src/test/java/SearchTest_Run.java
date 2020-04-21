@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(features = "src/test/resources/features/searching.feature",
         plugin = {"pretty", "html:report"})
 
-public class AllegroSearchTest_Run {
+public class SearchTest_Run {
 
 
 

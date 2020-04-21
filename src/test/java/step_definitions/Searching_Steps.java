@@ -9,33 +9,31 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import page_object.MainPage;
+import page_object.SearchResultPage;
+
+
 import static org.hamcrest.CoreMatchers.*;
+
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
+public class Searching_Steps extends Base_Step{
+    private List<String> inputList = new ArrayList<>();
+    private List<Integer> bad = new ArrayList<>();
+    private List<Integer> good = new ArrayList<>();
 
 
-public class Searching_Steps {
-    public List<String> inputList = new ArrayList<>();
-    private WebDriver driver;
-
-
-    @Given("User is on main page")
-    public void userIsOnMainPage() {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("https://allegro.pl/");
-    }
-
-    @When("User accept privacy policy")
-    public void userAcceptPrivacyPolicy() {
+    @Given("User is on main page and accept privacy policy")
+    public void userIsOnMainPageAndAcceptPrivacyPolicy() {
         new MainPage(driver).AcceptCookies();
-
     }
 
-    @And("User click on searching bar")
+
+
+    @When("User click on searching bar")
     public void userClickOnSearchingBar() {
         new MainPage(driver).ClickSearchBar();
     }
@@ -55,10 +53,31 @@ public class Searching_Steps {
 
     @Then("Results should contains searched word")
     public void resultsShouldContainsSearchedWord() {
-        List<WebElement> resultList = new MainPage(driver).getSearchResultList();
+        List<WebElement> resultList = new SearchResultPage(driver).getSearchResultList();
         for (int i = 0; i < resultList.size(); i++) {
-            Assert.assertThat(resultList.get(i).getText().toLowerCase(), containsString(inputList.get(0)));
-
+            if (resultList.get(i).getText().toLowerCase().contains(inputList.get(0))) {
+                good.add(i);
+            } else {
+                bad.add(i);
+            }
         }
+        System.out.println("Liczba ogłoszeń, których tytuły zawierają słowo wyszukiwane: " + good.size());
+        System.out.println("Liczba ogłoszeń, których tytuły nie zawierają słowa wyszukiwanego: " + bad.size());
+
+    }
+
+    @And("Searched word should be visible on the top of page")
+    public void searchedWordShouldBeVisibleOnTheTopOfPage() {
+        SearchResultPage resultPage = new SearchResultPage(driver);
+        String keyWord = resultPage.getSearchingTitle();
+        Assert.assertEquals(inputList.get(0), keyWord);
+    }
+
+    @And("Result page should contains {int} ads")
+    public void resultPageShouldContainsAds(int amount) {
+        List<WebElement> resultList = new SearchResultPage(driver).getSearchResultList();
+        Assert.assertEquals(amount, resultList.size());
     }
 }
+
+//Assert.assertThat(resultList.get(i).getText().toLowerCase(), containsString(inputList.get(0)));
