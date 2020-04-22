@@ -77,7 +77,7 @@ public class Searching_Steps extends Base_Step{
     public void resultPageShouldContainsAds(int amount) {
         List<WebElement> resultList = new SearchResultPage(driver).getSearchResultList();
         Assert.assertEquals(amount, resultList.size());
+        driver.quit();
     }
 }
 
-//Assert.assertThat(resultList.get(i).getText().toLowerCase(), containsString(inputList.get(0)));

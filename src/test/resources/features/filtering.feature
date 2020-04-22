@@ -1,6 +1,6 @@
-Feature: Adding to cart
+Feature: Filtering
 
-  Scenario: Adding items to cart as non-logged user
+  Scenario: Adding filtering as non-logged user
     Given User is on main page and privacy policy is accepted
     When User click fashion category
     And User click on subcategory

@@ -98,7 +98,9 @@ public class FilteringSteps extends Base_Step {
             double priceZłotychDouble = Double.parseDouble(priceZłotychArray[0]);
             double priceTotal = priceZłotychDouble + priceGroszyDouble;
             Assert.assertTrue("Ogłoszenie nr " + i + " Nie spełnia wymogów filtra ceny", priceTotal <= 25);
+            driver.quit();
         }
 
     }
+
 }
