@@ -9,5 +9,5 @@ Feature: Creating a normal account
     And User accept terms of use
     And User click create account button
     Examples:
-      | e-mail                | password     | day | month    | year |
-      | rudybyk@twojstary.com | MałyDuży123@ | 15  | listopad | 1989 |
+      | e-mail              | password     | day | month    | year |
+      | example@example.com | MałyDuży123@ | 15  | listopad | 1989 |
