@@ -28,6 +28,19 @@ public class MainPage {
     private WebElement userDropdown;
     @FindBy(xpath = "//a[@data-role='register-button']")
     private WebElement registerButton;
+    @FindBy(css = "._1fwkl._1h7wt._9hx3e._1vx3o._lsy4e._jl1m8._1ue2y._1k1q2._16qww._6dhbr._fee54_3DeiY")
+    private WebElement loggedUserName;
+    @FindBy(xpath = "//a[@href='/moje-konto']")
+    private WebElement myAccountButton;
+
+    public void ClickMyAccountButton(){
+        myAccountButton.click();
+    }
+
+
+    public String getUserName(){
+        return loggedUserName.getText();
+    }
 
     public void ClickRegisterButton(){
         registerButton.click();

@@ -11,5 +11,5 @@ Feature: searching
     Examples:
       | wanted item name |
       | nóż              |
-   #   | czapka           |
-    #  | rower            |
+      | czapka           |
+      | rower            |
